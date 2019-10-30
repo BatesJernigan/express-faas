@@ -6,4 +6,14 @@ functions:
   express-faas:
     lang: node10-express
     handler: ./src
-    image: localhost:50000/batesjernigan/express-faas
+    image: batesjernigan/express-faas
+    environment:
+      cgi_headers: true
+      fprocess: "node index.js"
+      mode: http
+      upstream_url: http://127.0.0.1:3000
+      exec_timeout: 10s
+      write_timeout: 15s
+      read_timeout: 15s
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser

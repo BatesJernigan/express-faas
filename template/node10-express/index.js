@@ -46,7 +46,7 @@ class FunctionContext {
         }
 
         this.headerValues = value;
-        return this;    
+        return this;
     }
 
     succeed(value) {
