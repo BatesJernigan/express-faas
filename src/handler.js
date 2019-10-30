@@ -16,14 +16,20 @@ const PUPPETEER_OPTS = {
 }
 
 module.exports = async function (event, context) {
-  console.log("INSIDE OF ASYNC FUNCTION")
+  console.info("launching puppeteer browser")
   const browser = await puppeteer.launch();
+  console.info("getting browser newPage")
   const page = await browser.newPage();
-  await page.goto('https://example.com');
+  url = 'https://example.com'
+  console.info(`START ${url}`)
+  await page.goto(url);
+  console.info(`AFTER ${url}`)
+  console.info("START screenshot")
   const imageResponse = await page.screenshot({path: 'example.png'});
-
+  console.info("AFTER screenshot")
   await browser.close();
   const result = { "imageResponse": imageResponse };
+
   context
     .status(200)
     .succeed(result);
