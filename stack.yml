@@ -1,0 +1,9 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:9000
+functions:
+  express-faas:
+    lang: node10-express
+    handler: ./src
+    image: localhost:50000/batesjernigan/express-faas
